@@ -652,11 +652,16 @@
       font-size: 0.75rem;
       color: rgba(0, 0, 0, 0.3);
       pointer-events: none;
-      z-index: 10;
+      z-index: 5;
       text-align: center;
       width: 90%;
       font-weight: 500;
       animation: fadeIn 1s ease 1.5s both;
+      transition: opacity 0.3s ease;
+    }
+    
+    .flip-card.flipped::after {
+      opacity: 0;
     }
     
     .flip-inner {
@@ -683,7 +688,7 @@
       }
     }
     
-    .flip-card:hover .flip-inner {
+    .flip-card.flipped .flip-inner {
       transform: rotateY(180deg);
     }
     
@@ -1631,6 +1636,11 @@
       const flipCards = document.querySelectorAll('.flip-card');
       flipCards.forEach((card, index) => {
         card.style.animationDelay = `${index * 0.1}s`;
+        
+        // Add click to flip functionality
+        card.addEventListener('click', () => {
+          card.classList.toggle('flipped');
+        });
       });
     });
 
