@@ -66,7 +66,17 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       transition: transform 0.4s ease;
       margin-bottom: 25px;
+      margin-right: 50px; /* adds breathing room on larger screens */
     }
+
+/* Make spacing responsive */
+    @media (max-width: 767px) {
+      header img {
+        margin-right: 0;
+        margin-bottom: 40px; /* adds vertical space on mobile */
+        }
+    }
+
     header img:hover { transform: scale(1.05); }
     header h1 { color: #007acc; font-size: 2.6rem; margin-bottom: 0.5rem; }
     header p {
@@ -74,6 +84,21 @@
       line-height: 1.7;
       color: #374151;
       max-width: 600px;
+    }
+
+     /* ===== About Section ===== */
+    #about {
+      background:#fff; padding:60px 20px; text-align:center;
+    }
+    #about h2 { color:#007acc; margin-bottom:25px; }
+    #about p { max-width:850px; margin:15px auto; font-size:1.05rem; line-height:1.8; color:#333; }
+    #about img {
+      width:180px; height:180px; object-fit:cover;
+      border-radius:12px; transition:transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    #about img:hover {
+      transform:scale(1.08);
+      box-shadow:0 6px 20px rgba(0,0,0,0.2);
     }
 
     /* ===== Story Bubbles ===== */
