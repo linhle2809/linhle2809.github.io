@@ -436,6 +436,23 @@
       color: var(--primary);
       font-size: 1rem;
     }
+    
+    .skill-bubble-desc {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      text-align: center;
+      max-width: 150px;
+    }
+    
+    .skill-bubble:hover .skill-bubble-desc {
+      opacity: 1;
+      max-height: 100px;
+    }
 
     /* ===== Section Base ===== */
     section {
@@ -685,6 +702,78 @@
       margin-bottom: 0.5rem;
       line-height: 1.5;
       font-size: 0.9rem;
+    }
+    
+    /* ===== Next Opportunity Card ===== */
+    .next-opportunity-card {
+      height: 320px;
+      background: linear-gradient(135deg, #007acc 0%, #0096ff 50%, #ff6b9d 100%);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      animation: gradientShift 6s ease infinite;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .next-opportunity-card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+      animation: rotate 10s linear infinite;
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .next-opportunity-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0, 122, 204, 0.4);
+    }
+    
+    .next-opportunity-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+    }
+    
+    .next-opportunity-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .next-opportunity-content h3 {
+      font-size: 1.8rem;
+      color: white;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    
+    .next-opportunity-content p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.95);
+      font-weight: 500;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.1);
     }
 
     /* ===== Analytics Section ===== */
@@ -1023,18 +1112,22 @@
       <div class="skill-bubble">
         <img src="story_design.png" class="skill-bubble-img" alt="Design">
         <span>Design</span>
+        <p class="skill-bubble-desc">Creating intuitive, user-centered experiences</p>
       </div>
       <div class="skill-bubble">
         <img src="story_data.png" class="skill-bubble-img" alt="Data">
         <span>Data</span>
+        <p class="skill-bubble-desc">Transforming raw data into actionable insights</p>
       </div>
       <div class="skill-bubble">
         <img src="story_analytics.png" class="skill-bubble-img" alt="Analytics">
         <span>Analytics</span>
+        <p class="skill-bubble-desc">Building predictive models and dashboards</p>
       </div>
       <div class="skill-bubble">
         <img src="story_storytelling.png" class="skill-bubble-img" alt="Storytelling">
         <span>Storytelling</span>
+        <p class="skill-bubble-desc">Communicating complex ideas simply</p>
       </div>
     </div>
   </div>
@@ -1084,7 +1177,7 @@
 
   <!-- ===== Companies I've Worked With ===== -->
   <section id="experience" class="fade-in">
-    <h2>Companies I've Worked With</h2>
+    <h2>Companies I've Worked At</h2>
     <p class="section-subtitle">A blend of global organizations, startups, and non-profits — where I built data products, drove automation, and shaped analytics-driven decisions</p>
     <div class="experience-grid">
       <div class="flip-card">
@@ -1166,6 +1259,14 @@
           </div>
         </div>
       </div>
+
+      <div class="next-opportunity-card">
+        <div class="next-opportunity-content">
+          <div class="next-opportunity-icon">✨</div>
+          <h3>Excited for my next opportunities</h3>
+          <p>Let's build something amazing together</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1230,12 +1331,6 @@
         <p>Tree isolation and PCA projection ensemble for financial anomaly detection</p>
         <iframe src="Linh,Le_Anomaly_Detection_with_iForest_and_PCA.html"></iframe>
       </div>
-
-      <div class="analytics-card">
-        <h3>Lead-Scoring Model</h3>
-        <p>PCA- and clustering-based scoring model to identify potential clients for research organizations</p>
-        <iframe src="Lead_Scoring_Model.html"></iframe>
-      </div>
     </div>
   </section>
 
@@ -1247,8 +1342,8 @@
       <div class="research-card">
         <h3>⚖️ Legal Justice: Right to Counsel for Immigrants</h3>
         <p>An empirical analysis examining systemic barriers to legal representation for immigrants in the U.S., benchmarking global models and proposing data-driven reforms.</p>
-        <iframe src="Legal Justice_ Right to Counsel for Immigrants.pdf" class="pdf-viewer"></iframe>
-        <div class="pdf-overlay" onclick="openPDF('Legal Justice_ Right to Counsel for Immigrants.pdf')">🔍 Expand PDF</div>
+        <iframe src="Legal Justice_ Right to Counsel for Immigrants.pdf#page=2" class="pdf-viewer"></iframe>
+        <div class="pdf-overlay" onclick="openPDF('Legal Justice_ Right to Counsel for Immigrants.pdf#page=2')">🔍 Expand PDF</div>
       </div>
 
       <div class="research-card">
@@ -1296,8 +1391,8 @@
   <!-- ===== Contact ===== -->
   <section id="contact" class="fade-in">
     <h2>Let's Connect</h2>
-    <p class="section-subtitle">I'm always excited to discuss data, product, and opportunities to collaborate</p>
-    <p>
+    <p class="section-subtitle" style="text-align: center;">I'm always excited to discuss data, product, and opportunities to collaborate</p>
+    <p style="text-align: center;">
       📧 <a href="mailto:lkhanhlinh25@gmail.com">lkhanhlinh25@gmail.com</a><br>
       🔗 <a href="https://www.linkedin.com/in/lbkle/" target="_blank">LinkedIn</a> | 
       💻 <a href="https://github.com/linhle2809" target="_blank">GitHub</a>
