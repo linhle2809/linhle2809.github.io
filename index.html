@@ -670,8 +670,12 @@
       width: 100%;
       height: 100%;
       text-align: center;
-      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.7s;
       transform-style: preserve-3d;
+    }
+    
+    /* Remove animation from flip-inner directly */
+    .flip-card .flip-inner.intro-animation {
       animation: cardIntro 1s ease-out both;
     }
     
@@ -689,6 +693,7 @@
       }
     }
     
+    .flip-card:hover .flip-inner,
     .flip-card.flipped .flip-inner {
       transform: rotateY(180deg);
     }
@@ -699,6 +704,7 @@
       height: 100%;
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-md);
+      -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
     }
     
@@ -710,6 +716,7 @@
       padding: 2rem;
       border: 2px solid transparent;
       transition: all 0.3s ease;
+      transform: rotateY(0deg);
     }
     
     .flip-card:hover .flip-front {
@@ -1642,7 +1649,7 @@
         
         // Add click to flip functionality
         card.addEventListener('click', (e) => {
-          e.stopPropagation();
+          console.log('Card clicked');
           card.classList.toggle('flipped');
         });
       });
