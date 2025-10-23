@@ -689,8 +689,7 @@
       }
     }
     
-    .flip-card.flipped .flip-inner,
-    .flip-card:hover .flip-inner {
+    .flip-card.flipped .flip-inner {
       transform: rotateY(180deg);
     }
     
@@ -1643,7 +1642,7 @@
         
         // Add click to flip functionality
         card.addEventListener('click', (e) => {
-          console.log('Card clicked');
+          e.stopPropagation();
           card.classList.toggle('flipped');
         });
       });
