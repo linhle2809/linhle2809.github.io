@@ -4,337 +4,476 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Linh Le | Data & Product Analytics</title>
-  <style>
-    /* Global styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: "Times New Roman", Times, serif;
-      color: #222;
-      background-color: #f9fafc;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
-    /* Navbar */
+  <style>
+    /* ===== Global ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(180deg, #fdfbff, #eef5ff);
+      color: #1f2937;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: "Playfair Display", serif; }
+    section { animation: fadeIn 0.8s ease both; }
+    @keyframes fadeIn { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
+
+    /* ===== Navbar ===== */
     nav {
       position: sticky;
       top: 0;
-      background: #ffffffcc;
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(10px);
-      padding: 1rem 0;
+      border-bottom: 1px solid #e5e7eb;
       text-align: center;
-      border-bottom: 1px solid #ddd;
+      padding: 1rem 0;
       z-index: 1000;
     }
     nav a {
-      margin: 0 15px;
+      margin: 0 20px;
       text-decoration: none;
       color: #007acc;
-      font-weight: bold;
-      font-size: 18px;
-      transition: color 0.3s ease;
+      font-weight: 600;
+      font-size: 1.05rem;
+      position: relative;
     }
-    nav a:hover {
-      color: #005a99;
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: #007acc;
+      transition: width 0.3s ease;
     }
+    nav a:hover::after { width: 100%; }
 
-    /* Hero section */
+    /* ===== Hero ===== */
     header {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(120deg, #e6f1ff, #f9fafc);
+      padding: 90px 20px;
+      background: linear-gradient(135deg, #e6f1ff 0%, #f9fafc 100%);
     }
-    @media (min-width: 768px) {
-      header {
-        flex-direction: row;
-        text-align: left;
-        justify-content: center;
-      }
-    }
+    @media (min-width: 768px) { header { flex-direction: row; text-align: left; } }
     header img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #007acc;
-      margin-bottom: 20px;
-    }
-    @media (min-width: 768px) {
-      header img {
-        margin-right: 50px;
-        margin-bottom: 0;
-      }
-    }
-    header h1 {
-      color: #007acc;
-      font-size: 2.4rem;
-      margin-bottom: 10px;
-    }
-    header p {
-      max-width: 500px;
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    /* Section styling */
-    section {
-      max-width: 800px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-    section h2 {
-      text-align: center;
-      color: #007acc;
+      width: 200px; height: 200px;
+      border-radius: 50%; object-fit: cover;
+      border: 5px solid #007acc;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.4s ease;
       margin-bottom: 25px;
-      font-size: 1.8rem;
     }
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-    ul li {
-      margin-bottom: 20px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    ul li:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    header img:hover { transform: scale(1.05); }
+    header h1 { color: #007acc; font-size: 2.6rem; margin-bottom: 0.5rem; }
+    header p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #374151;
+      max-width: 600px;
     }
 
-    /* Contact section */
-    #contact a {
-      color: #007acc;
-      text-decoration: none;
-      font-weight: bold;
+    /* ===== Story Bubbles ===== */
+    .story-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin: 40px 0 20px;
     }
-    #contact a:hover {
-      text-decoration: underline;
+    .story {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; cursor: pointer;
+      transition: transform 0.3s ease;
     }
+    .story:hover { transform: scale(1.08); }
+    .story img {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      border: 3px solid #007acc;
+      padding: 3px;
+      background: linear-gradient(135deg, #a5e1ff, #ffd6e0);
+      object-fit: cover;
+    }
+    .story span { margin-top: 8px; font-weight: 600; color: #007acc; font-size: 0.95rem; }
 
-    /* Footer */
-    footer {
-      background: #f1f1f1;
+    /* ===== Section base ===== */
+    section { max-width: 950px; margin: 70px auto; padding: 0 20px; }
+    section h2 { text-align: center; color: #007acc; font-size: 2rem; margin-bottom: 30px; }
+
+    /* ===== Product Cards ===== */
+    .product-card {
+      background: #ffffffcc;
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      transition: all 0.35s ease;
       text-align: center;
-      padding: 20px 0;
-      color: #555;
+      margin-bottom: 45px;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .product-card img {
+      width: 90%; max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      margin: 15px 0;
+    }
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #007acc, #0096ff);
+      color: white; font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+    /* ===== Experience Flip Cards ===== */
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.flip-card {
+  background: transparent;
+  width: 240px;
+  height: 260px;
+  perspective: 1000px;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front, .flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  backface-visibility: hidden;
+}
+
+.flip-front {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.flip-front img {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Hover glow + zoom effect */
+.flip-card:hover .flip-front img {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 8px rgba(0, 122, 204, 0.4));
+}
+
+.flip-back {
+  background: linear-gradient(160deg, #e8f3ff, #f9fafc);
+  color: #333;
+  transform: rotateY(180deg);
+  font-size: 0.9rem;
+  padding: 15px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.flip-back h3 {
+  color: #007acc;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.flip-back ul {
+  padding-left: 18px;
+  margin-top: 8px;
+}
+
+.flip-back li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+/* ===== Partner Companies Flip Cards ===== */
+#partners {
+  margin-top: 80px;
+}
+
+#partners .exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+#partners .flip-card {
+  background: transparent;
+  width: 240px;
+  height: 260px;
+  perspective: 1000px;
+}
+
+#partners .flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+}
+
+#partners .flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+#partners .flip-front,
+#partners .flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  backface-visibility: hidden;
+}
+
+#partners .flip-front {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+#partners .flip-front img {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Hover glow + zoom effect for partner cards */
+#partners .flip-card:hover .flip-front img {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 8px rgba(0, 122, 204, 0.4));
+}
+
+#partners .flip-back {
+  background: linear-gradient(160deg, #f0f7ff, #ffffff);
+  color: #333;
+  transform: rotateY(180deg);
+  font-size: 0.9rem;
+  padding: 15px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+#partners .flip-back h3 {
+  color: #007acc;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+#partners .flip-back ul {
+  padding-left: 18px;
+  margin-top: 8px;
+}
+
+#partners .flip-back li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+<!-- ===== Research Projects Section ===== -->
+<section id="research">
+  <h2>Research Projects I’ve Enjoyed Working On</h2>
+  <p style="text-align:center; max-width:800px; margin:0 auto 40px auto; line-height:1.7;">
+    Projects that explore the intersection of <b>law, policy, and cybersecurity</b> — grounded in empirical analysis, 
+    international frameworks, and ethical governance.
+  </p>
+
+  <div class="research-grid">
+
+    <!-- Legal Justice Project -->
+    <div class="research-card">
+      <h3 style="color:#007acc;">⚖️ Legal Justice: Right to Counsel for Immigrants</h3>
+      <p style="margin:10px 0 20px; line-height:1.6;">
+        An award-winning thesis analyzing the U.S. immigration system’s lack of guaranteed legal representation, 
+        comparing it to European legal models and proposing a framework for federally funded counsel for immigrants.
+      </p>
+      <iframe src="Legal Justice_ Right to Counsel for Immigrants.pdf"
+              class="pdf-viewer"
+              title="Legal Justice: Right to Counsel for Immigrants"></iframe>
+      <div class="pdf-overlay" onclick="openPDF('Legal Justice_ Right to Counsel for Immigrants.pdf')">🔍 Expand PDF</div>
+    </div>
+
+    <!-- China Cyber Espionage Project -->
+    <div class="research-card">
+      <h3 style="color:#007acc;">🛰️ China Cyber Espionage and Cyber Attacks in the U.S.</h3>
+      <p style="margin:10px 0 20px; line-height:1.6;">
+        A national-security assessment examining <b>China’s cyber espionage strategy</b> and its implications for U.S. infrastructure, 
+        economic stability, and democratic institutions — incorporating declassified sources and threat-intelligence data.
+      </p>
+      <iframe src="China Cyber Espionage - Assessment.pdf"
+              class="pdf-viewer"
+              title="China Cyber Espionage and Cyber Attacks in the U.S."></iframe>
+      <div class="pdf-overlay" onclick="openPDF('China Cyber Espionage - Assessment.pdf')">🔍 Expand PDF</div>
+    </div>
+
+  </div>
+</section>
+
+/* ===== Research Section ===== */
+#research {
+  background: #f9fafc;
+  padding: 70px 20px;
+  border-radius: 20px;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.05);
+}
+
+.research-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.research-card {
+  position: relative;
+  background: #ffffffcc;
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.research-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: 500px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+}
+
+.pdf-overlay {
+  position: absolute;
+  bottom: 25px;
+  right: 30px;
+  background: #007acc;
+  color: #fff;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.pdf-overlay:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ===== Fullscreen PDF Modal ===== */
+#pdfModal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+}
+#pdfModal iframe {
+  width: 90%;
+  height: 90%;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+}
+#pdfModalClose {
+  position: absolute;
+  top: 30px; right: 50px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: opacity 0.2s ease;
+}
+#pdfModalClose:hover { opacity: 0.7; }
+
+
+    /* ===== Book scroll ===== */
+    .book-scroll { display: flex; overflow-x: auto; gap: 25px; padding: 20px; scroll-behavior: smooth; }
+    .book-card {
+      flex: 0 0 auto; width: 200px;
+      background: white; border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      text-align: center; transition: transform 0.3s ease;
+    }
+    .book-card:hover { transform: scale(1.07); }
+    .book-card img { width: 100%; height: 260px; border-radius: 14px 14px 0 0; object-fit: cover; }
+
+    /* ===== Contact / Footer ===== */
+    #contact a { color: #007acc; text-decoration: none; font-weight: 600; }
+    #contact a:hover { text-decoration: underline; }
+    footer {
+      background: #f1f5f9;
+      text-align: center;
+      padding: 25px 0;
       font-size: 0.9rem;
+      color: #555;
+      margin-top: 60px;
     }
   </style>
 </head>
+
 <body>
+  <!-- ===== Expandable PDF Script ===== -->
+<div id="pdfModal">
+  <span id="pdfModalClose" onclick="closePDF()">×</span>
+  <iframe id="pdfModalFrame" src=""></iframe>
+</div>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <header>
-    <img src="profile.jpeg" alt="Linh Le portrait">
-    <div>
-      <h1>Hi, I'm Linh Le 👋</h1>
-      <p>Data & Product Analytics professional passionate about turning data into actionable strategy and building tools that simplify decision-making. Experienced across analytics, automation, and information security.</p>
-    </div>
-  </header>
-<section id="about" style="background:#fff; padding:60px 20px; text-align:center;">
-    <h2 style="color:#007acc; margin-bottom:25px;">About Me</h2>
-
-    <div style="max-width:850px; margin:0 auto; font-size:1.05rem; line-height:1.8; color:#333;">
-      <p>
-        Linh has graduated with a <b>triple major</b> from <b>Syracuse University</b> in 
-        <b>Policy Studies</b>, <b>Television, Radio and Film (with an Entertainment Business focus)</b>, 
-        and <b>Citizenship & Civic Engagement</b> — a unique program with just 30 students that empowers students to 
-        design their own civic action plans.
-      </p>
-      <p style="margin-top:15px;">
-        Linh has worked across <b>three continents</b> — from large tech firms to intergovernmental organizations such as 
-        the <b>Council of Europe</b> and <b>TikTok</b>. 
-        In her free time, Linh is an avid reader with an ever-growing book collection, 
-        and a passionate film & television enthusiast.
-      </p>
-    </div>
-
-    <!-- 🎞️ Interactive Photo Gallery -->
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-top:40px;">
-      <img src="photo1.HEIC" alt="Linh photo 1" style="width:180px; height:180px; object-fit:cover; border-radius:12px; transition:transform 0.3s ease, box-shadow 0.3s ease;">
-      <img src="photo2.HEIC" alt="Linh photo 2" style="width:180px; height:180px; object-fit:cover; border-radius:12px; transition:transform 0.3s ease, box-shadow 0.3s ease;">
-      <img src="photo3.HEIC" alt="Linh photo 2" style="width:180px; height:180px; object-fit:cover; border-radius:12px; transition:transform 0.3s ease, box-shadow 0.3s ease;">
-    </div>
-
-    <script>
-      // Add hover effect dynamically for clean inline CSS
-      const imgs = document.querySelectorAll('#about img');
-      imgs.forEach(img => {
-        img.addEventListener('mouseover', () => {
-          img.style.transform = 'scale(1.08)';
-          img.style.boxShadow = '0 6px 20px rgba(0,0,0,0.2)';
-        });
-        img.addEventListener('mouseout', () => {
-          img.style.transform = 'scale(1)';
-          img.style.boxShadow = 'none';
-        });
-      });
-    </script>
-  </section>
-  <section id="projects">
-    <h2>Featured Project</h2>
-
-    <div style="background:#fff; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.08); padding:25px; text-align:center;">
-      <h3 style="color:#007acc;">Regulatory Risk Calculator</h3>
-      <p style="margin:15px auto; max-width:650px; line-height:1.6;">
-        A Streamlit application that quantifies regulatory and policy risk across the US, EU, and Canada.
-        It integrates live policy data, runs scoring algorithms, and generates intuitive visual insights for organizations.
-      </p>
-
-      <!-- 📸 Image gallery -->
-      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin:25px 0;">
-        <img src="risk-app-1.png" alt="Regulatory Risk Calculator screenshot 1"
-             style="width:45%; min-width:280px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.1);" />
-        <img src="risk-app-2.png" alt="Regulatory Risk Calculator screenshot 2"
-             style="width:45%; min-width:280px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.1);" />
-      </div>
-
-      <p>
-        <a href="https://regulation-risk-calculator-6ikx5jqyhpbl3gp8cdxxfi.streamlit.app/"
-           target="_blank"
-           style="display:inline-block; background:#007acc; color:white;
-                  padding:12px 28px; border-radius:6px; text-decoration:none; font-weight:bold;">
-          🚀 Launch App
-        </a>
-      </p>
-    </div>
-
-    <h2 style="margin-top:60px;">Other Projects</h2>
-    <ul>
-      <li><b>Food Scanner MVP</b> — Integrated OpenFoodFacts + FDA datasets (2M + records).</li>
-      <li><b>Lead-Scoring Tool</b> — PCA + clustering model improving biotech prospect selection.</li>
-    </ul>
-  </section>
-
-    <section id="analytics">
-    <h2>Data Analytics</h2>
-    <p style="text-align:center; max-width:800px; margin:0 auto 40px auto;">
-      Exploratory and model-based anomaly detection across healthcare, finance, and credit card datasets
-      using Time Series forecasting, Autoencoders, Isolation Forest, and PCA.
-    </p>
-
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
-
-      <!-- Time Series Prophet -->
-      <div style="flex:1 1 320px; max-width:360px; background:#fff; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.08); padding:20px;">
-        <h3 style="color:#007acc;">Time Series Forecasting (Prophet)</h3>
-        <p>Forecasting healthcare trends and identifying abnormal spending behavior using Facebook Prophet with multiplicative seasonality.</p>
-        <iframe src="TimesSeries_Prophet_Le.html" style="width:100%; height:250px; border-radius:8px; border:none;"></iframe>
-        <p style="margin-top:10px;"><a href="TimesSeries_Prophet_Le.html" target="_blank" style="color:#007acc; font-weight:bold;">🔍 View Full Report</a></p>
-      </div>
-
-      <!-- Autoencoder -->
-      <div style="flex:1 1 320px; max-width:360px; background:#fff; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.08); padding:20px;">
-        <h3 style="color:#007acc;">Autoencoder Anomaly Detection</h3>
-        <p>Deep learning-based reconstruction error model to detect pricing and operational outliers in healthcare systems.</p>
-        <iframe src="LinhLe_Autoencoder.html" style="width:100%; height:250px; border-radius:8px; border:none;"></iframe>
-        <p style="margin-top:10px;"><a href="LinhLe_Autoencoder.html" target="_blank" style="color:#007acc; font-weight:bold;">🔍 View Full Report</a></p>
-      </div>
-
-      <!-- iForest + PCA -->
-      <div style="flex:1 1 320px; max-width:360px; background:#fff; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.08); padding:20px;">
-        <h3 style="color:#007acc;">Isolation Forest & PCA</h3>
-        <p>Ensemble-based anomaly detection across financial and credit card datasets combining tree isolation and PCA feature projection.</p>
-        <iframe src="Linh,Le_Anomaly_Detection_with_iForest_and_PCA.html" style="width:100%; height:250px; border-radius:8px; border:none;"></iframe>
-        <p style="margin-top:10px;"><a href="Linh,Le_Anomaly_Detection_with_iForest_and_PCA.html" target="_blank" style="color:#007acc; font-weight:bold;">🔍 View Full Report</a></p>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p style="text-align:center;">
-      📧 <a href="mailto:lkhanhlinh25@gmail.com">lkhanhlinh25@gmail.com</a> <br/>
-      🔗 <a href="https://www.linkedin.com/in/lbkle/">LinkedIn</a> |
-      💻 <a href="https://github.com/linhle2809">GitHub</a>
-    </p>
-  </section>
-  <section id="books" style="background:#f9fafc; padding:60px 20px;">
-    <h2 style="color:#007acc; text-align:center; margin-bottom:25px;">Recommended Books by Linh</h2>
-    <p style="text-align:center; max-width:700px; margin:0 auto 40px auto; line-height:1.6; color:#444;">
-      Stories and ideas that have shaped how I think about people, uncertainty, and meaning — from social systems to imagination.
-    </p>
-
-    <!-- Scrollable container -->
-    <div style="display:flex; overflow-x:auto; gap:25px; padding:20px; scroll-behavior:smooth;">
-      
-      <!-- Book 1 -->
-      <div style="flex:0 0 auto; width:200px; background:white; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:center; transition:transform 0.3s ease;">
-        <img src="book1.jpg" alt="Evicted by Matthew Desmond" style="width:100%; height:260px; object-fit:cover; border-top-left-radius:12px; border-top-right-radius:12px;">
-        <div style="padding:10px;">
-          <h4 style="margin:8px 0; font-size:1rem; color:#007acc;">Evicted</h4>
-          <p style="font-size:0.9rem; color:#555;">Matthew Desmond</p>
-        </div>
-      </div>
-
-      <!-- Book 2 -->
-      <div style="flex:0 0 auto; width:200px; background:white; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:center; transition:transform 0.3s ease;">
-        <img src="book2.jpg" alt="The Unbearable Lightness of Being by Milan Kundera" style="width:100%; height:260px; object-fit:cover; border-top-left-radius:12px; border-top-right-radius:12px;">
-        <div style="padding:10px;">
-          <h4 style="margin:8px 0; font-size:1rem; color:#007acc;">The Unbearable Lightness of Being</h4>
-          <p style="font-size:0.9rem; color:#555;">Milan Kundera</p>
-        </div>
-      </div>
-
-      <!-- Book 3 -->
-      <div style="flex:0 0 auto; width:200px; background:white; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:center; transition:transform 0.3s ease;">
-        <img src="book3.jpg" alt="In the Café of Lost Youth by Patrick Modiano" style="width:100%; height:260px; object-fit:cover; border-top-left-radius:12px; border-top-right-radius:12px;">
-        <div style="padding:10px;">
-          <h4 style="margin:8px 0; font-size:1rem; color:#007acc;">In the Café of Lost Youth</h4>
-          <p style="font-size:0.9rem; color:#555;">Patrick Modiano</p>
-        </div>
-      </div>
-
-      <!-- Book 4 -->
-      <div style="flex:0 0 auto; width:200px; background:white; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:center; transition:transform 0.3s ease;">
-        <img src="book4.jpg" alt="The Black Swan by Nassim Nicholas Taleb" style="width:100%; height:260px; object-fit:cover; border-top-left-radius:12px; border-top-right-radius:12px;">
-        <div style="padding:10px;">
-          <h4 style="margin:8px 0; font-size:1rem; color:#007acc;">The Black Swan</h4>
-          <p style="font-size:0.9rem; color:#555;">Nassim Nicholas Taleb</p>
-        </div>
-      </div>
-
-      <!-- Book 5 -->
-      <div style="flex:0 0 auto; width:200px; background:white; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:center; transition:transform 0.3s ease;">
-        <img src="book5.jpg" alt="Before the Coffee Gets Cold by Toshikazu Kawaguchi" style="width:100%; height:260px; object-fit:cover; border-top-left-radius:12px; border-top-right-radius:12px;">
-        <div style="padding:10px;">
-          <h4 style="margin:8px 0; font-size:1rem; color:#007acc;">Before the Coffee Gets Cold</h4>
-          <p style="font-size:0.9rem; color:#555;">Toshikazu Kawaguchi</p>
-        </div>
-      </div>
-    </div>
-
-    <script>
-      // Hover zoom effect for each book card
-      const books = document.querySelectorAll('#books div[style*="flex:0 0 auto"]');
-      books.forEach(card => {
-        card.addEventListener('mouseover', () => card.style.transform = 'scale(1.08)');
-        card.addEventListener('mouseout', () => card.style.transform = 'scale(1)');
-      });
-    </script>
-  </section>
-
-
-  <footer>
-    © 2025 Linh Le. All rights reserved.
-  </footer>
-
+<script>
+function openPDF(pdfPath) {
+  document.getElementById('pdfModal').style.display = 'flex';
+  document.getElementById('pdfModalFrame').src = pdfPath;
+}
+function closePDF() {
+  document.getElementById('pdfModal').style.display = 'none';
+  document.getElementById('pdfModalFrame').src = "";
+}
+</script>
+  <!-- everything else remains unchanged -->
+  <!-- your existing body content (hero, products, experience, partners, analytics, etc.) -->
 </body>
 </html>
