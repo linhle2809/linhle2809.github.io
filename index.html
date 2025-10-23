@@ -133,21 +133,19 @@
     }
     .btn:hover { transform: translateY(-2px); opacity: 0.9; }
 
-    /* ===== Experience Flip Cards ===== */
+    /* ===== Flip Cards (Experience & Partners) ===== */
 .exp-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 30px;
   justify-items: center;
 }
-
 .flip-card {
   background: transparent;
   width: 240px;
   height: 260px;
   perspective: 1000px;
 }
-
 .flip-inner {
   position: relative;
   width: 100%;
@@ -156,324 +154,204 @@
   transition: transform 0.7s;
   transform-style: preserve-3d;
 }
-
-.flip-card:hover .flip-inner {
-  transform: rotateY(180deg);
-}
-
+.flip-card:hover .flip-inner { transform: rotateY(180deg); }
 .flip-front, .flip-back {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   border-radius: 14px;
   box-shadow: 0 3px 12px rgba(0,0,0,0.1);
   backface-visibility: hidden;
 }
-
 .flip-front {
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+  background: #fff; display: flex; align-items: center; justify-content: center; padding: 10px;
 }
-
 .flip-front img {
-  width: 80%;
-  height: auto;
-  object-fit: contain;
+  width: 80%; object-fit: contain;
   transition: transform 0.4s ease, filter 0.4s ease;
 }
-
-/* Hover glow + zoom effect */
 .flip-card:hover .flip-front img {
   transform: scale(1.08);
-  filter: drop-shadow(0 0 8px rgba(0, 122, 204, 0.4));
+  filter: drop-shadow(0 0 8px rgba(0,122,204,0.4));
 }
-
 .flip-back {
-  background: linear-gradient(160deg, #e8f3ff, #f9fafc);
-  color: #333;
-  transform: rotateY(180deg);
-  font-size: 0.9rem;
-  padding: 15px;
-  overflow-y: auto;
-  text-align: left;
+  background: linear-gradient(160deg,#e8f3ff,#f9fafc);
+  color:#333; transform: rotateY(180deg);
+  font-size:0.9rem; padding:15px; overflow-y:auto; text-align:left;
 }
+.flip-back h3{color:#007acc;text-align:center;margin-bottom:5px;}
+.flip-back ul{padding-left:18px;margin-top:8px;}
+.flip-back li{margin-bottom:6px;line-height:1.4;}
 
-.flip-back h3 {
-  color: #007acc;
-  margin-bottom: 5px;
-  text-align: center;
-}
-
-.flip-back ul {
-  padding-left: 18px;
-  margin-top: 8px;
-}
-
-.flip-back li {
-  margin-bottom: 6px;
-  line-height: 1.4;
-}
-
-/* ===== Partner Companies Flip Cards ===== */
-#partners {
-  margin-top: 80px;
-}
-
-#partners .exp-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 30px;
-  justify-items: center;
-}
-
-#partners .flip-card {
-  background: transparent;
-  width: 240px;
-  height: 260px;
-  perspective: 1000px;
-}
-
-#partners .flip-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.7s;
-  transform-style: preserve-3d;
-}
-
-#partners .flip-card:hover .flip-inner {
-  transform: rotateY(180deg);
-}
-
-#partners .flip-front,
-#partners .flip-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 14px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-  backface-visibility: hidden;
-}
-
-#partners .flip-front {
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-}
-
-#partners .flip-front img {
-  width: 80%;
-  height: auto;
-  object-fit: contain;
-  transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-/* Hover glow + zoom effect for partner cards */
-#partners .flip-card:hover .flip-front img {
-  transform: scale(1.08);
-  filter: drop-shadow(0 0 8px rgba(0, 122, 204, 0.4));
-}
-
-#partners .flip-back {
-  background: linear-gradient(160deg, #f0f7ff, #ffffff);
-  color: #333;
-  transform: rotateY(180deg);
-  font-size: 0.9rem;
-  padding: 15px;
-  overflow-y: auto;
-  text-align: left;
-}
-
-#partners .flip-back h3 {
-  color: #007acc;
-  text-align: center;
-  margin-bottom: 5px;
-}
-
-#partners .flip-back ul {
-  padding-left: 18px;
-  margin-top: 8px;
-}
-
-#partners .flip-back li {
-  margin-bottom: 6px;
-  line-height: 1.4;
-}
-
-<!-- ===== Research Projects Section ===== -->
-<section id="research">
-  <h2>Research Projects I’ve Enjoyed Working On</h2>
-  <p style="text-align:center; max-width:800px; margin:0 auto 40px auto; line-height:1.7;">
-    Projects that explore the intersection of <b>law, policy, and cybersecurity</b> — grounded in empirical analysis, 
-    international frameworks, and ethical governance.
-  </p>
-
-  <div class="research-grid">
-
-    <!-- Legal Justice Project -->
-    <div class="research-card">
-      <h3 style="color:#007acc;">⚖️ Legal Justice: Right to Counsel for Immigrants</h3>
-      <p style="margin:10px 0 20px; line-height:1.6;">
-        An award-winning thesis analyzing the U.S. immigration system’s lack of guaranteed legal representation, 
-        comparing it to European legal models and proposing a framework for federally funded counsel for immigrants.
-      </p>
-      <iframe src="Legal Justice_ Right to Counsel for Immigrants.pdf"
-              class="pdf-viewer"
-              title="Legal Justice: Right to Counsel for Immigrants"></iframe>
-      <div class="pdf-overlay" onclick="openPDF('Legal Justice_ Right to Counsel for Immigrants.pdf')">🔍 Expand PDF</div>
-    </div>
-
-    <!-- China Cyber Espionage Project -->
-    <div class="research-card">
-      <h3 style="color:#007acc;">🛰️ China Cyber Espionage and Cyber Attacks in the U.S.</h3>
-      <p style="margin:10px 0 20px; line-height:1.6;">
-        A national-security assessment examining <b>China’s cyber espionage strategy</b> and its implications for U.S. infrastructure, 
-        economic stability, and democratic institutions — incorporating declassified sources and threat-intelligence data.
-      </p>
-      <iframe src="China Cyber Espionage - Assessment.pdf"
-              class="pdf-viewer"
-              title="China Cyber Espionage and Cyber Attacks in the U.S."></iframe>
-      <div class="pdf-overlay" onclick="openPDF('China Cyber Espionage - Assessment.pdf')">🔍 Expand PDF</div>
-    </div>
-
-  </div>
-</section>
-
-/* ===== Research Section ===== */
+    /* ===== Research Section ===== */
 #research {
   background: #f9fafc;
   padding: 70px 20px;
   border-radius: 20px;
   box-shadow: 0 3px 20px rgba(0,0,0,0.05);
 }
-
-.research-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-}
-
+.research-grid { display:flex; flex-direction:column; gap:50px; }
 .research-card {
-  position: relative;
-  background: #ffffffcc;
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position:relative; background:#ffffffcc;
+  backdrop-filter:blur(10px);
+  border-radius:16px; padding:30px;
+  box-shadow:0 4px 18px rgba(0,0,0,0.08);
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.research-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-}
-
+.research-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,0.12); }
 .pdf-viewer {
-  width: 100%;
-  height: 500px;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  width:100%; height:500px; border:none;
+  border-radius:12px; box-shadow:0 3px 12px rgba(0,0,0,0.1);
 }
-
 .pdf-overlay {
-  position: absolute;
-  bottom: 25px;
-  right: 30px;
-  background: #007acc;
-  color: #fff;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  position:absolute; bottom:25px; right:30px;
+  background:#007acc; color:#fff; font-weight:600;
+  padding:8px 16px; border-radius:6px; cursor:pointer;
+  box-shadow:0 3px 6px rgba(0,0,0,0.15);
+  transition:transform 0.2s ease, opacity 0.2s ease;
 }
-.pdf-overlay:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
-
-/* ===== Fullscreen PDF Modal ===== */
-#pdfModal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(4px);
-  align-items: center;
-  justify-content: center;
-}
-#pdfModal iframe {
-  width: 90%;
-  height: 90%;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
-}
-#pdfModalClose {
-  position: absolute;
-  top: 30px; right: 50px;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-  transition: opacity 0.2s ease;
-}
-#pdfModalClose:hover { opacity: 0.7; }
-
+.pdf-overlay:hover{transform:translateY(-2px);opacity:0.9;}
+#pdfModal{display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.8);backdrop-filter:blur(4px);align-items:center;justify-content:center;}
+#pdfModal iframe{width:90%;height:90%;border:none;border-radius:12px;box-shadow:0 5px 25px rgba(0,0,0,0.3);}
+#pdfModalClose{position:absolute;top:30px;right:50px;font-size:2rem;color:white;cursor:pointer;font-weight:bold;transition:opacity 0.2s ease;}
+#pdfModalClose:hover{opacity:0.7;}
 
     /* ===== Book scroll ===== */
-    .book-scroll { display: flex; overflow-x: auto; gap: 25px; padding: 20px; scroll-behavior: smooth; }
-    .book-card {
-      flex: 0 0 auto; width: 200px;
-      background: white; border-radius: 14px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-      text-align: center; transition: transform 0.3s ease;
-    }
-    .book-card:hover { transform: scale(1.07); }
-    .book-card img { width: 100%; height: 260px; border-radius: 14px 14px 0 0; object-fit: cover; }
+.book-scroll{display:flex;overflow-x:auto;gap:25px;padding:20px;scroll-behavior:smooth;}
+.book-card{flex:0 0 auto;width:200px;background:white;border-radius:14px;box-shadow:0 3px 10px rgba(0,0,0,0.08);text-align:center;transition:transform 0.3s ease;}
+.book-card:hover{transform:scale(1.07);}
+.book-card img{width:100%;height:260px;border-radius:14px 14px 0 0;object-fit:cover;}
 
     /* ===== Contact / Footer ===== */
-    #contact a { color: #007acc; text-decoration: none; font-weight: 600; }
-    #contact a:hover { text-decoration: underline; }
-    footer {
-      background: #f1f5f9;
-      text-align: center;
-      padding: 25px 0;
-      font-size: 0.9rem;
-      color: #555;
-      margin-top: 60px;
-    }
+#contact a{color:#007acc;text-decoration:none;font-weight:600;}
+#contact a:hover{text-decoration:underline;}
+footer{background:#f1f5f9;text-align:center;padding:25px 0;font-size:0.9rem;color:#555;margin-top:60px;}
   </style>
 </head>
 
 <body>
-  <!-- ===== Expandable PDF Script ===== -->
-<div id="pdfModal">
-  <span id="pdfModalClose" onclick="closePDF()">×</span>
-  <iframe id="pdfModalFrame" src=""></iframe>
-</div>
 
-<script>
-function openPDF(pdfPath) {
-  document.getElementById('pdfModal').style.display = 'flex';
-  document.getElementById('pdfModalFrame').src = pdfPath;
-}
-function closePDF() {
-  document.getElementById('pdfModal').style.display = 'none';
-  document.getElementById('pdfModalFrame').src = "";
-}
-</script>
-  <!-- everything else remains unchanged -->
-  <!-- your existing body content (hero, products, experience, partners, analytics, etc.) -->
+  <nav>
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#analytics">Analytics</a>
+    <a href="#books">Books</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <header>
+    <img src="profile.jpeg" alt="Linh Le portrait">
+    <div>
+      <h1>Hi, I'm Linh Le</h1>
+      <p>I’m a Data & Product Analytics professional passionate about building human-centered, data-driven products. To expand my ability not only to be a <b>storyteller</b> but to use <b>data</b> as the story itself, I am currently pursuing my <b>MS in Applied Analytics</b> at <b>Columbia University</b>.</p>
+    </div>
+  </header>
+
+  <!-- ===== Story Bubbles ===== -->
+  <div class="story-row">
+    <div class="story"><img src="story_design.png"><span>Design</span></div>
+    <div class="story"><img src="story_data.png"><span>Data</span></div>
+    <div class="story"><img src="story_analytics.png"><span>Analytics</span></div>
+    <div class="story"><img src="story_storytelling.png"><span>Storytelling</span></div>
+  </div>
+
+  <!-- ===== Featured Products ===== -->
+  <section id="products">
+    <h2>Featured Products I’ve Built</h2>
+    <div class="product-card">
+      <h3 style="color:#007acc;">🥗 Food Compass</h3>
+      <p>A collaborative web app built with <b>LLMs</b> and <b>public APIs</b> to help users monitor their food intake, track recalls, and understand U.S. dietary trends. Developed by a cross-functional student team blending <b>UX, data visualization</b>, and <b>health analytics</b>.</p>
+      <img src="foodcompass.png" alt="Food Compass Screenshot">
+      <a href="https://food-risk-checker-wbckgwfqbgd7butbfwwuw8.streamlit.app/" target="_blank" class="btn">🍽️ Launch Food Compass</a>
+    </div>
+
+    <div class="product-card">
+      <h3 style="color:#007acc;">⚖️ Regulatory Risk Calculator (WIP)</h3>
+      <p>A <b>work-in-progress product</b> built on Streamlit that scans <b>U.S. Congressional bills</b> and quantifies <b>regulatory risk</b> for all companies, especially <b>startups</b> who need an automated way to monitor emerging policy changes. Translates legislative text into visual risk insights.</p>
+      <img src="risk-app-1.png" alt="Regulatory Risk Calculator Screenshot">
+      <a href="https://regulation-risk-calculator-6ikx5jqyhpbl3gp8cdxxfi.streamlit.app/" target="_blank" class="btn">🚀 Launch App</a>
+    </div>
+  </section>
+
+  <!-- ===== Companies I’ve Worked With ===== -->
+  <section id="experience">
+    <h2>Companies I’ve Worked With</h2>
+    <p style="text-align:center;max-width:800px;margin:0 auto 40px;">A blend of global organizations, startups, and non-profits — where I built data products, drove automation, and shaped analytics-driven decisions.</p>
+    <div class="exp-grid">
+      <!-- TikTok -->
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front"><img src="tiktok.jpeg"></div><div class="flip-back"><h3>TikTok</h3><p><b>Global Security Org Intern</b><br>May–Aug 2025</p><ul><li>Delivered a cross-functional proposal improving process visibility for 200+ GSO staff.</li><li>Re-engineered automation bot logic to expand coverage and efficiency.</li><li>Automated 80% of internal workflows with provisioning bots.</li></ul></div></div></div>
+      <!-- Racing Prodigy -->
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front"><img src="racingprodigy.png"></div><div class="flip-back"><h3>Racing Prodigy</h3><p><b>Product Management Intern</b><br>May–Aug 2024</p><ul><li>Analyzed market trends across 50+ motorsport properties.</li><li>Led the first full cycle of the Racing League strategy, defining OKRs and KPIs.</li><li>Drove a 60% media engagement lift via segmentation insights.</li></ul></div></div></div>
+      <!-- Habitat -->
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front"><img src="habitat.jpeg"></div><div class="flip-back"><h3>Habitat for Humanity</h3><p><b>Consultant</b><br>May–Aug 2023</p><ul><li>Led database migration for decades of organizational records.</li></ul></div></div></div>
+      <!-- Council of Europe -->
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front"><img src="coe.png"></div><div class="flip-back"><h3>Council of Europe</h3><p><b>Media Analyst Intern</b><br>Aug–Dec 2022</p><ul><li>Performed UX analytics on Social Rights digital platforms.</li><li>Proposed design solutions that scaled outreach initiatives.</li></ul></div></div></div>
+      <!-- Hiscock -->
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front"><img src="hiscock.webp"></div><div class="flip-back"><h3>Hiscock Legal Aid Society</h3><p><b>Legal Aid Assistant</b><br>Jan–May 2022</p><ul><li>Supported attorneys in providing pro bono legal services to Afghanistan refugees.</li></ul></div></div></div>
+    </div>
+  </section>
+
+  <!-- ===== Partnered Companies ===== -->
+  <section id="partners">
+    <h2>Companies I’ve Partnered With for Independent Projects</h2>
+    <p style="text-align:center;max-width:800px;margin:0 auto 40px;">Collaborations through academic and creative initiatives — blending analytics, storytelling, and design thinking.</p>
+    <div class="exp-grid">
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front"><img src="lionsgate.png"></div><div class="flip-back"><h3>Lionsgate</h3><p><b>Creative Pitch Partnership</b></p><ul><li>Pitched a full scripted entertainment concept from ideation to funding.</li><li>Integrated audience insights and financing strategy.</li></ul></div></div></div>
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front"><img src="lyftcitibike.png"></div><div class="flip-back"><h3>Lyft × Citi Bike</h3><p><b>Columbia Business School Project</b></p><ul><li>Applied data analytics, ethnographic research, and prototyping.</li><li>Designed a concept to increase Citi Bike ridership and engagement.</li></ul></div></div></div>
+    </div>
+  </section>
+
+  <!-- ===== Analytics Section ===== -->
+  <section id="analytics">
+    <h2>Data Analytics</h2>
+    <p style="text-align:center;max-width:800px;margin:0 auto 40px;">Exploratory and model-based analytics across healthcare, finance, and research datasets.</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:30px;">
+      <div class="product-card" style="flex:1 1 320px;max-width:360px;"><h3 style="color:#007acc;">Time Series Forecasting (Prophet)</h3><p>Forecasting healthcare trends with Facebook Prophet using multiplicative seasonality.</p><iframe src="TimesSeries_Prophet_Le.html" style="width:100%;height:250px;border:none;border-radius:8px;"></iframe></div>
+      <div class="product-card" style="flex:1 1 320px;max-width:360px;"><h3 style="color:#007acc;">Autoencoder Anomaly Detection</h3><p>Deep learning model detecting pricing and operational outliers.</p><iframe src="LinhLe_Autoencoder.html" style="width:100%;height:250px;border:none;border-radius:8px;"></iframe></div>
+      <div class="product-card" style="flex:1 1 320px;max-width:360px;"><h3 style="color:#007acc;">Isolation Forest & PCA</h3><p>Tree isolation and PCA projection ensemble for financial anomaly detection.</p><iframe src="Linh,Le_Anomaly_Detection_with_iForest_and_PCA.html" style="width:100%;height:250px;border:none;border-radius:8px;"></iframe></div>
+      <div class="product-card" style="flex:1 1 320px;max-width:360px;"><h3 style="color:#007acc;">Lead-Scoring Model</h3><p>PCA- and clustering-based scoring model to identify potential clients for research organizations — integrating behavioral and categorical indicators into a predictive lead-ranking dashboard.</p><iframe src="Lead_Scoring_Model.html" style="width:100%;height:250px;border:none;border-radius:8px;"></iframe></div>
+    </div>
+  </section>
+
+  <!-- ===== Research Section ===== -->
+  <section id="research">
+    <h2>Research Projects I’ve Enjoyed Working On</h2>
+    <p style="text-align:center;max-width:800px;margin:0 auto 40px;">Exploring <b>law, policy, and cybersecurity</b> through empirical research and governance frameworks.</p>
+    <div class="research-grid">
+      <div class="research-card"><h3 style="color:#007acc;">⚖️ Legal Justice: Right to Counsel for Immigrants</h3><p>An empirical analysis examining systemic barriers to legal representation for immigrants in the U.S., benchmarking global models and proposing data-driven reforms.</p><iframe src="Legal Justice_ Right to Counsel for Immigrants.pdf" class="pdf-viewer"></iframe><div class="pdf-overlay" onclick="openPDF('Legal Justice_ Right to Counsel for Immigrants.pdf')">🔍 Expand PDF</div></div>
+      <div class="research-card"><h3 style="color:#007acc;">🛰️ China Cyber Espionage and Cyber Attacks in the U.S.</h3><p>A policy assessment of state-sponsored cyber operations, analyzing data, impact, and international law implications.</p><iframe src="China Cyber Espionage - Assessment.pdf" class="pdf-viewer"></iframe><div class="pdf-overlay" onclick="openPDF('China Cyber Espionage - Assessment.pdf')">🔍 Expand PDF</div></div>
+    </div>
+  </section>
+
+  <!-- ===== Books ===== -->
+  <section id="books">
+    <h2>Recommended Books</h2>
+    <div class="book-scroll">
+      <div class="book-card"><img src="book1.jpg"><h4>Evicted</h4><p>Matthew Desmond</p></div>
+      <div class="book-card"><img src="book2.jpg"><h4>The Unbearable Lightness of Being</h4><p>Milan Kundera</p></div>
+      <div class="book-card"><img src="book3.jpg"><h4>In the Café of Lost Youth</h4><p>Patrick Modiano</p></div>
+      <div class="book-card"><img src="book4.jpg"><h4>The Black Swan</h4><p>Nassim Nicholas Taleb</p></div>
+      <div class="book-card"><img src="book5.jpg"><h4>Before the Coffee Gets Cold</h4><p>Toshikazu Kawaguchi</p></div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p style="text-align:center;">📧 <a href="mailto:lkhanhlinh25@gmail.com">lkhanhlinh25@gmail.com</a><br>🔗 <a href="https://www.linkedin.com/in/lbkle/">LinkedIn</a> | 💻 <a href="https://github.com/linhle2809">GitHub</a></p>
+  </section>
+
+  <footer>© 2025 Linh Le. All rights reserved.</footer>
+
+  <!-- ===== Expandable PDF Script ===== -->
+  <div id="pdfModal">
+    <span id="pdfModalClose" onclick="closePDF()">×</span>
+    <iframe id="pdfModalFrame" src=""></iframe>
+  </div>
+  <script>
+    function openPDF(pdfPath){document.getElementById('pdfModal').style.display='flex';document.getElementById('pdfModalFrame').src=pdfPath;}
+    function closePDF(){document.getElementById('pdfModal').style.display='none';document.getElementById('pdfModalFrame').src="";}
+  </script>
+
 </body>
 </html>
