@@ -643,28 +643,6 @@
       position: relative;
     }
     
-    .flip-card::after {
-      content: "Click to learn more what I did there";
-      position: absolute;
-      bottom: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.75rem;
-      color: rgba(0, 0, 0, 0.3);
-      pointer-events: none;
-      z-index: 1;
-      text-align: center;
-      width: 90%;
-      font-weight: 500;
-      animation: fadeIn 1s ease 1.5s both;
-      transition: opacity 0.3s ease;
-    }
-    
-    .flip-card.flipped::after,
-    .flip-card:hover::after {
-      opacity: 0;
-    }
-    
     .flip-inner {
       position: relative;
       width: 100%;
@@ -717,6 +695,27 @@
       border: 2px solid transparent;
       transition: all 0.3s ease;
       transform: rotateY(0deg);
+    }
+    
+    .flip-front::after {
+      content: "Click to learn more";
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      color: rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+      text-align: center;
+      width: 90%;
+      font-weight: 500;
+      animation: fadeIn 1s ease 1.5s both;
+      transition: opacity 0.3s ease;
+    }
+    
+    .flip-card:hover .flip-front::after,
+    .flip-card.flipped .flip-front::after {
+      opacity: 0;
     }
     
     .flip-card:hover .flip-front {
@@ -1433,8 +1432,8 @@
 
   <!-- ===== Analytics Section ===== -->
   <section id="analytics" class="fade-in">
-    <h2>Data Analytics</h2>
-    <p class="section-subtitle">Exploratory and model-based analytics across healthcare, finance, and research datasets</p>
+    <h2>Anti-Fraud & Anomaly Detection</h2>
+    <p class="section-subtitle">Advanced machine learning techniques for fraud detection and risk identification across financial and operational datasets</p>
     <div class="analytics-grid">
       <div class="analytics-card">
         <h3>Time Series Forecasting (Prophet)</h3>
@@ -1443,14 +1442,14 @@
       </div>
 
       <div class="analytics-card">
-        <h3>Autoencoder Anomaly Detection</h3>
-        <p>Deep learning model detecting pricing and operational outliers</p>
+        <h3>Autoencoder Fraud Detection</h3>
+        <p>Deep learning autoencoder model identifying fraudulent transactions and suspicious pricing patterns in financial data</p>
         <iframe src="LinhLe_Autoencoder.html"></iframe>
       </div>
 
       <div class="analytics-card">
-        <h3>Isolation Forest & PCA</h3>
-        <p>Tree isolation and PCA projection ensemble for financial anomaly detection</p>
+        <h3>Isolation Forest & PCA Fraud Detection</h3>
+        <p>Ensemble fraud detection using tree isolation and PCA projection to identify financial anomalies and fraudulent behavior</p>
         <iframe src="Linh,Le_Anomaly_Detection_with_iForest_and_PCA.html"></iframe>
       </div>
     </div>
