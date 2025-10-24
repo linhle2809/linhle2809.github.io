@@ -854,7 +854,6 @@
       height: 360px;
       perspective: 1500px;
       cursor: pointer;
-      position: relative;
     }
     
     .flip-inner {
@@ -864,6 +863,7 @@
       text-align: center;
       transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       transform-style: preserve-3d;
+      transform-origin: center center;
     }
     
     @keyframes cardIntro {
